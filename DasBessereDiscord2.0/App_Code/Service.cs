@@ -42,6 +42,8 @@ public class Service : IService
 
     int amountOfclients;
 
+    string clientMessagecontent = "";
+
     public void ClientLogIntoServer(bool ClientisLoggedin)
     {
         if (ClientisLoggedin == true)
@@ -64,16 +66,16 @@ public class Service : IService
         }
     }
 
-    string clientMessage;
     public string ServerSendMessageToClient()
     {
-        return clientMessage;
+        return clientMessagecontent;
     }
 
     public void ServerGetMessageFromClient(string clientMessage)
     {
-        IsClientMessageNull(clientMessage);
+        this.clientMessagecontent = clientMessage;
 
+        IsClientMessageNull(clientMessage);
     }
 
     public void ClientLogOutOfServer(bool ClientisLoggedin, int clientNumber)
@@ -96,13 +98,7 @@ public class Service : IService
         }
         else
         {
-            this.clientMessage = clientMessage;
             ServerSendMessageToClient();
         }
     }
-
-
-
-
-
 }
