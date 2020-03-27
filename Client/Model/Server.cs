@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChatClient
 {
-    class Server : IService
+    public class Server : IService
     {
         public Messaging messaging;
 
@@ -15,6 +15,8 @@ namespace ChatClient
         {
             throw new NotImplementedException();
         }
+            
+        
 
         public Task ClientLogIntoServerAsync(bool ClientisLoggedin)
         {

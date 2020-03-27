@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace ChatClient
 
 {
-    class Messaging
+    public class Messaging
     {
 
         
         string userMessage;
         string fullMessage;
-        Server server;
+        public Server server;
         public ChatClient client;
         public ViewModelMessageing viewModelMessageing;
         public Messaging()
@@ -43,7 +43,8 @@ namespace ChatClient
 
         public void CreateFullMessage()
         {
-            this.fullMessage = DateTime.Now.ToString() + " von " + userName + " : " + userMessage;
+            string dateTime = DateTime.Now.ToString();
+            this.fullMessage = dateTime + " von " + userName + " : " + userMessage;
             SendFullMessageToInterfaces();
         }
 
@@ -63,7 +64,7 @@ namespace ChatClient
         public void PrintMessageInChatRoom()
         {
             this.serverMessage = client.ReceiveMessageIntern();
-            viewModelMessageing.PrintServerMessageInChatroom(serverMessage);
+            viewModelMessageing.PrintServerMessageInChatroom();
         }
         #endregion
         #region LogOut

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChatClient.MainWindow">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAACQAAAAAAAAUAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatClient.ViewModelMessageing">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAiACIAAAAAAAABAIAAAAIAAAEAA=</HashCode>
+      <FileName>ViewModel\ViewModelMessageing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatClient.Messaging">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAIAABCAAAAAIAAAQQAAQAAqAAAAACBIEAAAI=</HashCode>
+      <FileName>Model\Messaging.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatClient.ChatClient">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAgEAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAo=</HashCode>
+      <FileName>Model\ChatClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatClient.Server">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECQAAAEAAQAAAAAAAAIQAAAAAAAGAAABAAAEAAgEA=</HashCode>
+      <FileName>Model\Server.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ChatClient.IChatClient">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Model\IChatClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

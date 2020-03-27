@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChatClient
 {
-    class ViewModelMessageing
+    public class ViewModelMessageing
     {
         public Messaging messaging;
         public MainWindow window;
@@ -20,7 +20,7 @@ namespace ChatClient
             messaging.LogInAndSaveUserName(userName);
         }
         #endregion
-        #region SendeMessage
+        #region SendMessage
         public void SendMessage(string userMessage)
         {
             messaging.GetUserMessage(userMessage);
@@ -28,7 +28,7 @@ namespace ChatClient
         #endregion
         #region ReceiveMessage
         string Message = "";
-        public void PrintServerMessageInChatroom(string Message)
+        public void PrintServerMessageInChatroom()
         {
             this.Message = messaging.serverMessage;
             window.PrintMessage();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChatClient
 {
-    class ChatClient : IChatClient
+    public class ChatClient : IChatClient
     {
         public Messaging messaging;
         string fullMessage;

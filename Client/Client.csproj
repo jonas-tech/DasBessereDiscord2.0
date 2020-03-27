@@ -98,6 +98,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagramClient.cd" />
     <None Include="Connected Services\Proxy\Client.Proxy.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
