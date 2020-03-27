@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cClient
+namespace ChatClient
 {
     class Server : IService
     {
