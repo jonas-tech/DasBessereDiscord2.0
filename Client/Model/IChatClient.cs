@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChatClient
 {
-    interface IClient
+    public interface IChatClient
     {
+        void GetClientNumber(int ClientNumber);
         //Set Messages
         string ClientSendMessageToServer();
         //Get Messages

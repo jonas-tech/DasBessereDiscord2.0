@@ -10,22 +10,28 @@ namespace ChatClient
     class Messaging
     {
 
-        string userName;
+        
         string userMessage;
         string fullMessage;
         Server server;
-        public cClient client;
+        public ChatClient client;
         public ViewModelMessageing viewModelMessageing;
         public Messaging()
         {
-            client = new cClient() { messaging = this };
+            client = new ChatClient() { messaging = this };
             server = new Server() { messaging = this };
         }
         #region LogIn
+        string userName;
+        int clientNumber;
         public void LogInAndSaveUserName(string userName)
         {
             this.userName = userName;
-            //server.ClientLogIntoServer(true);
+            server.ClientLogIntoServer(true);
+        }
+        public void SaveClientNumber(int clientNumber)
+        {
+            this.clientNumber = clientNumber;
         }
         #endregion
         #region SenduserMessage
@@ -44,14 +50,14 @@ namespace ChatClient
         public void SendFullMessageToInterfaces()
         {
             client.SendMessageInternal(fullMessage);
-            //server.ServerGetMessageFromClient(fullMessage);
+            server.ServerGetMessageFromClient(fullMessage);
         }
         #endregion
         #region ReceiveMessageFromServer
         public string serverMessage;
         public void ReceiveMEssagesFromInterfaces()
         {
-            //serverMessage =  server.ServerSendMessageToClient();
+            serverMessage =  server.ServerSendMessageToClient();
             PrintMessageInChatRoom();
         }
         public void PrintMessageInChatRoom()
@@ -63,7 +69,7 @@ namespace ChatClient
         #region LogOut
         public void LogOutFromServer()
         {
-            //server.ClientLogOutOfServer(false);
+            server.ClientLogOutOfServer(false,clientNumber);
             this.userName = null;
         }
         #endregion LogOutCo

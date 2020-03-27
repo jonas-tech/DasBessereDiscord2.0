@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChatClient
 {
-    class cClient
+    class ChatClient : IChatClient
     {
         public Messaging messaging;
         string fullMessage;
@@ -32,6 +32,11 @@ namespace ChatClient
         public string ReceiveMessageIntern()
         {
             return fullMessage;
+        }
+
+        public void GetClientNumber(int clientNumber)
+        {
+            messaging.SaveClientNumber(clientNumber);
         }
     }
 }
