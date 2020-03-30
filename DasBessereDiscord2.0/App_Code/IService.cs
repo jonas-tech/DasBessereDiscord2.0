@@ -11,7 +11,7 @@ using System.Text;
 public interface IServiceClient
 {
 	[OperationContract(IsOneWay = true)]
-	string ServerSendMessageToClient();
+	void ServerSendMessageToClient(string serverMessage);
 }
 [ServiceContract(CallbackContract = typeof(IServiceClient))]
 

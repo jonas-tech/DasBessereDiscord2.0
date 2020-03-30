@@ -1,22 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
-[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
 public class Service : IService
 {
-    Dictionary<IServiceClient, string> clientUsernames = new Dictionary<IServiceClient, string>();
+
+    private List<Socket> clientSockets = new List<Socket>();
+
+    Socket chatSocket;
+
+    Socket clientSocket;
+
+    IPHostEntry chatIPhost;
+
+    IPAddress clientIPadress;
+
+    IPEndPoint clientIPendPoint;
+
+    int amountOfclients;
 
     string clientMessagecontent = "";
 
-    public void ClientLogIntoServer(string userName)
+    public void ClientLogIntoServer(bool ClientisLoggedin)
     {
+        if (ClientisLoggedin == true)
+        {
+            chatIPhost = Dns.GetHostEntry("");
 
+            clientIPadress = chatIPhost.AddressList[0];
+
+            clientIPendPoint = new IPEndPoint(clientIPadress, 53225);
+
+            chatSocket.Bind(clientIPendPoint);
+
+            chatSocket.Listen(2);
+
+            clientSocket.Connect(clientIPendPoint);
+
+            clientSockets.Add(clientSocket);
+
+            amountOfclients++;
+        }
     }
 
     public string ServerSendMessageToClient()
@@ -31,8 +62,16 @@ public class Service : IService
         IsClientMessageNull(clientMessage);
     }
 
-    public void ClientLogOutOfServer(string userName)
+    public void ClientLogOutOfServer(bool ClientisLoggedin, int clientNumber)
     {
+        if (ClientisLoggedin == false)
+        {
+            clientSockets[clientNumber].Close();
+
+            clientSockets.Remove(clientSockets[clientNumber]);
+
+            amountOfclients--;
+        }
     }
 
     private void IsClientMessageNull(string clientMessage)
