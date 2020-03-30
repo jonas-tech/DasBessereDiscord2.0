@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Proxy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace Client.Model
     {
         public Messaging messaging;
 
-        void ServerSendMessageToClient(string serverMessage)
+
+        void IServiceCallback.ServerSendMessageToClient(string serverMessage)
         {
             messaging.PrintMessageInChatRoom(serverMessage);
         }
