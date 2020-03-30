@@ -10,14 +10,20 @@ namespace Client.Model
 {
     public class Messaging
     {
-        
-        InstanceContext context = new InstanceContext(new ChatClient());
-        Proxy.ServiceClient server = new Proxy.ServiceClient(context);
-        
+        InstanceContext context;
+        Proxy.ServiceClient server;
+
         string userMessage;
         string fullMessage;
         public ChatClient client;
         public ViewModelMessageing viewModelMessageing;
+
+        public Messaging()
+        {
+            context = new InstanceContext(new ChatClient());
+            server = new Proxy.ServiceClient(context);
+            client = new ChatClient() { messaging = this };
+        }
         
         #region LogIn
         string userName;
@@ -25,7 +31,7 @@ namespace Client.Model
         {
             
             this.userName = userName;
-            //server.ClientLogIntoServer(userName);
+            server.ClientLogIntoServer(userName);
         }
         #endregion
         #region SenduserMessage
@@ -44,7 +50,7 @@ namespace Client.Model
 
         public void SendFullMessageToInterfaces()
         {
-            //server.ServerGetMessageFromClient(fullMessage);
+            server.ServerGetMessageFromClient(fullMessage);
         }
         #endregion
         #region ReceiveMessageFromServer
@@ -59,7 +65,7 @@ namespace Client.Model
         #region LogOut
         public void LogOutFromServer()
         {
-            //server.ClientLogOutOfServer(false,clientNumber);
+            server.ClientLogOutOfServer(userName);
             this.userName = null;
         }
         #endregion LogOutCo
