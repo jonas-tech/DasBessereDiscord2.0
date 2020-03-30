@@ -4,40 +4,31 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using Client.Proxy;
+using Client.ViewModel;
 
-namespace ChatClient
-
+namespace Client.Model
 {
     public class Messaging
     {
-
+        InstanceContext context = new InstanceContext(new ChatClient());
+        Proxy.ServiceClient server = new Proxy.ServiceClient(context);
         
         string userMessage;
         string fullMessage;
-        public Server server;
         public ChatClient client;
         public ViewModelMessageing viewModelMessageing;
-        InstanceContext context;
         
         public Messaging()
         {
             client = new ChatClient() { messaging = this };
-            server = new Server() { messaging = this };
-            context = new InstanceContext(new Server());
         }
         #region LogIn
         string userName;
-        int clientNumber;
         public void LogInAndSaveUserName(string userName)
         {
             
             this.userName = userName;
-            server.ClientLogIntoServer(true);
-        }
-        public void SaveClientNumber(int clientNumber)
-        {
-            this.clientNumber = clientNumber;
+            //server.ClientLogIntoServer(userName);
         }
         #endregion
         #region SenduserMessage
@@ -56,27 +47,22 @@ namespace ChatClient
 
         public void SendFullMessageToInterfaces()
         {
-            client.SendMessageInternal(fullMessage);
-            server.ServerGetMessageFromClient(fullMessage);
+            //server.ServerGetMessageFromClient(fullMessage);
         }
         #endregion
         #region ReceiveMessageFromServer
         public string serverMessage;
-        public void ReceiveMEssagesFromInterfaces()
+
+        public void PrintMessageInChatRoom(string serverMessage)
         {
-            serverMessage =  server.ServerSendMessageToClient();
-            PrintMessageInChatRoom();
-        }
-        public void PrintMessageInChatRoom()
-        {
-            this.serverMessage = client.ReceiveMessageIntern();
+            this.serverMessage = serverMessage;
             viewModelMessageing.PrintServerMessageInChatroom();
         }
         #endregion
         #region LogOut
         public void LogOutFromServer()
         {
-            server.ClientLogOutOfServer(false,clientNumber);
+            //server.ClientLogOutOfServer(false,clientNumber);
             this.userName = null;
         }
         #endregion LogOutCo

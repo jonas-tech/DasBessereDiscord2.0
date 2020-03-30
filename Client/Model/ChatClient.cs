@@ -4,39 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatClient
+namespace Client.Model
 {
-    public class ChatClient : IChatClient
+    public class ChatClient : Proxy.IServiceCallback
     {
         public Messaging messaging;
-        string fullMessage;
 
-        //Set Messages
-        public void SendMessageInternal(string fullMessage)
+        void ServerSendMessageToClient(string serverMessage)
         {
-            this.fullMessage = fullMessage;
-            ClientSendMessageToServer();
-        }
-        public string ClientSendMessageToServer()
-        {
-            return fullMessage;
-        }
-
-        //Get Messages
-        public void ReceiveMessageFromServer(string fullMessage)
-        {
-            this.fullMessage = fullMessage;
-            messaging.PrintMessageInChatRoom();
-        }
-
-        public string ReceiveMessageIntern()
-        {
-            return fullMessage;
-        }
-
-        public void GetClientNumber(int clientNumber)
-        {
-            messaging.SaveClientNumber(clientNumber);
+            messaging.PrintMessageInChatRoom(serverMessage);
         }
     }
 }
