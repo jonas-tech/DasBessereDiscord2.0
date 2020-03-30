@@ -18,7 +18,9 @@ public class Service : IService
 
     public void ClientLogIntoServer(string userName)
     {
-       
+        IServiceClient clientConnection = OperationContext.Current.GetCallbackChannel<IServiceClient>();
+
+        clientUsernames[clientConnection] = userName;
     }
 
     public string ServerSendMessageToClient()
@@ -28,13 +30,26 @@ public class Service : IService
 
     public void ServerGetMessageFromClient(string clientMessage)
     {
-        clientMessagecontent = clientMessage;
-
         IsClientMessageNull(clientMessage);
+
+        IServiceClient clientConnection = OperationContext.Current.GetCallbackChannel<IServiceClient>();
+
+        foreach (IServiceClient otherClients in clientUsernames.Keys)
+        {
+            if (otherClients == clientConnection)
+            {
+                continue;
+
+            }
+            otherClients.ServerSendMessageToClient(clientMessage);
+        }
     }
 
     public void ClientLogOutOfServer(string userName)
     {
+        IServiceClient clientConnection = OperationContext.Current.GetCallbackChannel<IServiceClient>();
+
+        clientUsernames.Remove(clientConnection);
     }
 
     private void IsClientMessageNull(string clientMessage)
