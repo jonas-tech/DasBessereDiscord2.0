@@ -10,6 +10,7 @@ namespace Client.Model
 {
     public class Messaging
     {
+        
         InstanceContext context = new InstanceContext(new ChatClient());
         Proxy.ServiceClient server = new Proxy.ServiceClient(context);
         
@@ -18,10 +19,6 @@ namespace Client.Model
         public ChatClient client;
         public ViewModelMessageing viewModelMessageing;
         
-        public Messaging()
-        {
-            client = new ChatClient() { messaging = this };
-        }
         #region LogIn
         string userName;
         public void LogInAndSaveUserName(string userName)
