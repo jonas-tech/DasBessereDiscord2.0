@@ -16,8 +16,6 @@ namespace ChatClient
             throw new NotImplementedException();
         }
             
-        
-
         public Task ClientLogIntoServerAsync(bool ClientisLoggedin)
         {
             throw new NotImplementedException();
