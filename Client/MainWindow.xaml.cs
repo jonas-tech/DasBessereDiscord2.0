@@ -28,6 +28,17 @@ namespace Client
             this.InitializeComponent();
             viewModel = new ViewModelMessageing { window = this };
         }
+
+        private async void StartupEventArgs()
+        {
+            await Welcome();
+        }
+
+        private async Task Welcome()
+        {
+
+        }
+
         private void LogOffButton_Click(object sender, RoutedEventArgs e)
         {
             LogINScreen.Visibility = Visibility.Visible;
