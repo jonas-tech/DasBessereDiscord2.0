@@ -13,7 +13,7 @@ namespace HostInCmd
         {
             ServiceHost host = new ServiceHost(typeof(Service));
             host.Open();
-            Console.WriteLine("Service is ready");
+            Console.WriteLine("Gestartet");
             Console.ReadLine();
             host.Close();
         }
